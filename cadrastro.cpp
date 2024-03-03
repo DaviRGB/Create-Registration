@@ -32,7 +32,7 @@ void cadrastarAssistido(DefensoriaPublica& defensoria){
 
     string CPF2;
     CPF2 = CPF.substr(0, 3) + '.' + CPF.substr(3, 3) + '.' + CPF.substr(6, 3) + '-' + CPF.substr(9, 2);
-    cout << CPF << " " << CPF2 << endl;
+    //cout << CPF << " " << CPF2 << endl;
     
     cout << "\nDigite o E-mail do Assistido\n\n";
     while(true) {
@@ -56,7 +56,8 @@ void cadrastarAssistido(DefensoriaPublica& defensoria){
         break;
     }
 
-    int idade, RG;
+    int idade;
+    string RGt;
     cout << "\nDigite a idade do Assistido\n\n";
     while (true) {
         if (!(cin >> idade)) {
@@ -74,19 +75,14 @@ void cadrastarAssistido(DefensoriaPublica& defensoria){
 
     cout << "\nDigite o numero do RG do Assistido\n\n";
     while (true) {
-        if (!(cin >> RG)) {
-            cout << "Entrada invalida! Por favor, digite um numero inteiro.\n";
-            cin.clear();
-            cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
-            continue;
-        }
-        if(RG < 1111111 || RG > 9999999) {
+        cin >> RGt;
+        if (RGt.size() != 7 || !all_of(RGt.begin(), RGt.end(), ::isdigit)){
             cout << "Numero de RG invalido, Por favor, digite os 7 digitos do RG\n";
-            continue;
+        } else {
+            break;
         }
-        break;
     }
-
+    int RG = stoi(RGt);
     defensoria.cadrastroDeAssistidos(nome, CPF2, email, endereco, Telefone, idade, RG);
     this_thread::sleep_for(chrono::seconds(3));
     system("cls");
