@@ -103,16 +103,19 @@ void consultarAssistido(DefensoriaPublica& defensoria) {
 void editarAssistido(DefensoriaPublica& defensoria) {
     cout << "Digite o CPF do assistido que deseja alterar os dados:\n";
     string CPF; cin >> CPF;
+    string CPF2;
+    CPF2 = CPF.substr(0, 3) + '.' + CPF.substr(3, 3) + '.' + CPF.substr(6, 3) + '-' + CPF.substr(9, 2);
     system("cls");
-    defensoria.editarAssistido(CPF);
+    defensoria.editarAssistido(CPF2);
     system("cls");
 }
 
 void excluirAssistido(DefensoriaPublica& defensoria) {
     cout << "Digite o CPF do Assistido que deseja excluir\n";
-    string CPF; 
-    cin >> CPF;
-    defensoria.excluirAssistido(CPF);
+    string CPF; cin >> CPF;
+    string CPF2;
+    CPF2 = CPF.substr(0, 3) + '.' + CPF.substr(3, 3) + '.' + CPF.substr(6, 3) + '-' + CPF.substr(9, 2);
+    defensoria.excluirAssistido(CPF2);
     this_thread::sleep_for(chrono::seconds(3));
     system("cls");
     //defensoria.imprime(); cout << "\n\n";
