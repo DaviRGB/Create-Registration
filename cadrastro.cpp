@@ -107,6 +107,7 @@ void editarAssistido(DefensoriaPublica& defensoria) {
     CPF2 = CPF.substr(0, 3) + '.' + CPF.substr(3, 3) + '.' + CPF.substr(6, 3) + '-' + CPF.substr(9, 2);
     system("cls");
     defensoria.editarAssistido(CPF2);
+    this_thread::sleep_for(chrono::seconds(3));
     system("cls");
 }
 
